@@ -51,7 +51,11 @@ const CartTab = () => {
   };
 
   // Format the total price
+
   const formattedTotalPrice = formatPrice(calculateTotalCartPrice());
+
+  // Add a console log to check the value of formattedTotalPrice
+  console.log("formattedTotalPrice:", formattedTotalPrice);
 
   const handleCloseTabCart = () => {
     dispatch(toggleStatusTab());

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import { assets } from "../../assets/images/cart/assets";
 import { Link } from "react-router-dom";
 import Visa from "../assets/Visa.png"; 
+import { FiAlertCircle } from 'react-icons/fi';
 
 const countries = [
     { name: "Nigeria" }, { name: "USA" }, { name: "UK" }, { name: "Canada" },

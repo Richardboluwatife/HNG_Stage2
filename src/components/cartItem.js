@@ -51,6 +51,8 @@ const CartItem = (props) => {
     return parseFloat(price).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   };
 
+  
+
   return (
     <div>
       <div className="flex justify-between items-center text-black p-2 border-b-2 md:w-[450px] xs:w-[100px] md:gap-10 ">
@@ -87,7 +89,7 @@ const CartItem = (props) => {
           x
         </button>
       </div>
-      {/* <p>total: ₦{formatPrice(totalPrice)}</p> Render totalPrice instead of subtotal */}
+      <p>total: ₦{formatPrice(totalPrice)}</p> {/* Render totalPrice instead of subtotal */}
     </div>
   );
 };
