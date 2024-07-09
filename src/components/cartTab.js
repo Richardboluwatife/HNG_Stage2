@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import CartItem from './cartItem'; // Assuming CartItem component is properly defined
 import { toggleStatusTab } from '../stores/cart';
 import { Link } from 'react-router-dom';
+import { products } from '../products';
+import { product } from "../Prodet";
+import { products1 } from "../product";
 
 const CartTab = () => {
   const carts = useSelector((store) => store.cart.items);
@@ -14,7 +17,7 @@ const CartTab = () => {
   // Helper function to format currency
   const formatPrice = (price) => {
     if (isNaN(price)) {
-      return '₦0.00'; // Return ₦0.00 if price is NaN
+      return "₦0.00"; // Return ₦0.00 if price is NaN
     }
     return parseFloat(price).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   };
@@ -35,7 +38,21 @@ const CartTab = () => {
 
   // Calculate the subtotal
   const calculateSubtotal = () => {
-    return cartItems.reduce((subtotal, item) => subtotal + (item.price * item.quantity), 0);
+    let total = 0
+    console.log(total);
+
+    for (let i = 0; i < carts.length; i++) {
+      const cart = carts[i]
+      const id = cart.productId
+      const detail =
+        products.find((product) => product.id === id) ||
+        product.find((product) => product.id === id) ||
+        products1.find((product) => product.id === id);
+
+      total = total + (detail.price * cart.quantity)
+    }
+    console.log(total);
+    return total;
   };
 
   // Calculate total by adding delivery fee to subtotal
@@ -52,10 +69,10 @@ const CartTab = () => {
 
   // Format the total price
 
-  const formattedTotalPrice = formatPrice(calculateTotalCartPrice());
+  const formattedTotalPrice = formatPrice(calculateSubtotal());
 
   // Add a console log to check the value of formattedTotalPrice
-  console.log("formattedTotalPrice:", formattedTotalPrice);
+  console.log("formattedTotalPrice:", calculateSubtotal());
 
   const handleCloseTabCart = () => {
     dispatch(toggleStatusTab());
@@ -89,10 +106,10 @@ const CartTab = () => {
                     <h1 className="font-semibold mb-2 text-white">Summary</h1>
 
                     <div className="flex items-center justify-between border-b border-gray-300 text-gray-600 text-sm py-3">
-                      {/* <p className='text-white'>Subtotal:</p> */}
+                      <p className='text-white'>Subtotal:</p>
                         <p className="text-primary font-semibold  text-white">
                           {/* <p>Total Price: ₦{formattedTotalPrice}</p> Display the total price */}
-                          <p>Total Price: ₦{formattedTotalPrice} </p> 
+                          <p>₦{formattedTotalPrice} </p> 
                       </p>
                     </div>
                     <div className="flex items-center justify-between border-b border-gray-300 text-gray-600 text-sm py-3">

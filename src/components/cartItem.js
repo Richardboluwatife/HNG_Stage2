@@ -89,7 +89,7 @@ const CartItem = (props) => {
           x
         </button>
       </div>
-      <p>total: ₦{formatPrice(totalPrice)}</p> {/* Render totalPrice instead of subtotal */}
+      {/* <p>total: ₦{formatPrice(totalPrice)}</p> Render totalPrice instead of subtotal */}
     </div>
   );
 };

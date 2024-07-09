@@ -3,6 +3,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Visa from "../assets/Visa.png"; 
 import { FiAlertCircle } from 'react-icons/fi';
+import { useSelector } from 'react-redux';
+import { products } from "../products";
+import { product } from "../Prodet";
+import { products1 } from "../product";
 
 const countries = [
     { name: "Nigeria" }, { name: "USA" }, { name: "UK" }, { name: "Canada" },
@@ -34,6 +38,35 @@ function Checkout() {
 
     const handleInputChange = (value) => {
         setSelectedMethod(value);
+    };
+
+    const carts = useSelector((store) => store.cart.items);
+    const formatPrice = (price) => {
+        if (isNaN(price)) {
+            return "₦0.00"; // Return ₦0.00 if price is NaN
+        }
+        return parseFloat(price).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    };
+
+    const calculateTotal = () => {
+        let productTotal = 0
+        console.log(productTotal);
+
+        for (let i = 0; i < carts.length; i++) {
+            const cart = carts[i]
+            const id = cart.productId
+            const detail =
+                products.find((product) => product.id === id) ||
+                product.find((product) => product.id === id) ||
+                products1.find((product) => product.id === id);
+
+            productTotal = productTotal + (detail.price * cart.quantity)
+        }
+        console.log(productTotal);
+
+        const delivery = 10000
+        const totalPrice = productTotal + delivery
+        return totalPrice;
     };
 
     return (
@@ -83,7 +116,7 @@ function Checkout() {
 
                         <div className="pl-14 pt-5">
                             <p className=" text-xl">Total</p>
-                            <p className=" text-xl pt-2">₦322,000.00</p>
+                            <p className=" text-xl pt-2">{formatPrice(calculateTotal())}</p>
                         </div>
                         
                     </div>
