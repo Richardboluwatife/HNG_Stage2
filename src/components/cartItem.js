@@ -36,7 +36,9 @@ const CartItem = (props) => {
   // }, [totalPrice]);
 
   const handleMinusQuantity = () => {
-    dispatch(changeQuantity({ productId, quantity: quantity - 1 }));
+    if (quantity > 1) {
+      dispatch(changeQuantity({ productId, quantity: quantity - 1 }));
+    }
   };
 
   const handlePlusQuantity = () => {

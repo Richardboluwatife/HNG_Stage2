@@ -23,7 +23,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="">
-        <div className="flex justify-center gap-28">
+        <div className="md:flex justify-center gap-28 xs:hidden">
           <div className="text-white">
             <p className=" text-xl font-bold">Contact Us</p>
             <p>Phone: +123 805 223 2843</p>

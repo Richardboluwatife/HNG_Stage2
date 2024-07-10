@@ -79,7 +79,7 @@ const CartTab = () => {
   };
 
   return (
-    <div className="bg-zinc-100 md:pl-28 md:flex">
+    <div className="bg-zinc-100 md:pl-28 md:flex pt-28">
       <div className=" right-0 w-[500px] h-full grid grid-rows-[60px_1fr_60px]">
         <h2 className="p-5 text-black text-2xl">My Cart</h2>
         {carts.length === 0 ? (

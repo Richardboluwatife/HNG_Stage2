@@ -26,7 +26,7 @@ const Header = () => {
         dispatch(toggleStatusTab());
     }
   return (
-    <div className=" items-center justify-center text-center pt-2">
+    <div className=" items-center justify-center text-center pt-2 bg-zinc-100">
       <header className="flex justify-between items-center mb-2 md:w-[1100px] h-14 mx-auto">
         <Link to="/" className="text-xl font-semibold xs:pl-5">
           {/* Home. */}
@@ -91,8 +91,8 @@ const Header = () => {
         </div>
       </header>
 
-      <div className="md:hidden bg-slate-200 rounded-md border-transparent xs:flex">
-        <IoIosSearch className="mt-3.5 w-8" />
+      <div className="md:hidden bg-slate-700 rounded-md border-transparent xs:flex ml-10 w-[300px]">
+        <IoIosSearch className="mt-3.5" />
         <input
           type="text"
           className="p-1  input-bar rounded-3 rounded-end-0 bg-slate-200 text-black placeholder:text-neutral-400 border-transparent "
